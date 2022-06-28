@@ -11,9 +11,15 @@ namespace PlatformShoot
         private float mGroundMoveSpeed = 5f;
         private float mJumpForce = 12f;
         private bool isJump;
+        private MainPanel mMainPanel;
+        public GameObject mGamePass;
         private void Start()
         {
             mRig = GetComponent<Rigidbody2D>();
+            mMainPanel = GameObject.Find("Canvas").GetComponent<MainPanel>();
+            //mGamePass = GameObject.Find("GamePass").GetComponent<GameObject>();
+            mGamePass.SetActive(false);
+            //GameObject.Find("GamePass").GetComponent<GameObject>().SetActive(false);
         }
         private void Update()
         {
@@ -47,6 +53,11 @@ namespace PlatformShoot
             if(collision.tag=="Door")
             {
                 SceneManager.LoadScene("GamePassScene");
+            }
+            if(collision.tag=="Reward")
+            {
+                Destroy(collision.gameObject);
+                mMainPanel.UpdateScoreText(1);
             }
         }
     }

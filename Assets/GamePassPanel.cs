@@ -10,7 +10,10 @@ namespace PlatformShoot
     {
         private void Start()
         {
-            //transform.Find("ResetGameBtn").GetComponent<Button>().onClick.AddListener()
+            transform.Find("ResetGameBtn").GetComponent<Button>().onClick.AddListener(() =>
+            {
+                SceneManager.LoadScene("SampleScene");
+            });//C#lameda±Ì¥Ô Ω
         }
     }
 }
